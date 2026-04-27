@@ -1,0 +1,100 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Sans:wght@400;500&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 60 100% 2%;
+    --foreground: 40 100% 67%;
+
+    --card: 60 50% 4%;
+    --card-foreground: 40 100% 67%;
+
+    --popover: 60 50% 4%;
+    --popover-foreground: 40 100% 67%;
+
+    --primary: 40 100% 67%;
+    --primary-foreground: 60 100% 2%;
+
+    --secondary: 30 100% 50%;
+    --secondary-foreground: 60 100% 2%;
+
+    --muted: 60 20% 10%;
+    --muted-foreground: 40 50% 45%;
+
+    --accent: 30 100% 50%;
+    --accent-foreground: 60 100% 2%;
+
+    --border: 40 30% 15%;
+    --input: 40 30% 15%;
+    --ring: 40 100% 67%;
+
+    --radius: 0.25rem;
+
+    --terminal-glow: 0 0 20px hsl(40 100% 67% / 0.15);
+    --terminal-text-glow: 0 0 8px hsl(40 100% 67% / 0.4);
+    --scanline-opacity: 0.03;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'DM Sans', sans-serif;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Space Grotesk', sans-serif;
+  }
+}
+
+/* Scanline overlay */
+.scanlines::after {
+  content: '';
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    hsl(40 100% 67% / var(--scanline-opacity)) 2px,
+    hsl(40 100% 67% / var(--scanline-opacity)) 4px
+  );
+  pointer-events: none;
+  z-index: 50;
+}
+
+/* CRT flicker */
+@keyframes flicker {
+  0%, 100% { opacity: 1; }
+  92% { opacity: 1; }
+  93% { opacity: 0.8; }
+  94% { opacity: 1; }
+}
+
+.crt-flicker {
+  animation: flicker 4s infinite;
+}
+
+/* Blinking cursor */
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.cursor-blink {
+  animation: blink 1s step-end infinite;
+}
+
+/* Text glow */
+.text-glow {
+  text-shadow: var(--terminal-text-glow);
+}
+
+.font-mono-terminal {
+  font-family: 'Space Grotesk', monospace;
+}
