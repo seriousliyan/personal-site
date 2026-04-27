@@ -100,8 +100,8 @@ const CONTENT: Record<Section, React.ReactNode> = {
       </p>
       <p className="text-muted-foreground">
         <span className="text-foreground text-glow">linkedin</span> →{" "}
-        <a href="https://www.linkedin.com/in/seriousliyan" target="_blank" rel="noreferrer" className="text-secondary hover:underline">
-          linkedin.com/in/seriousliyan
+        <a href="https://www.linkedin.com/in/lichrisyan/" target="_blank" rel="noreferrer" className="text-secondary hover:underline">
+          linkedin.com/in/lichrisyan
         </a>
       </p>
       <p className="text-muted-foreground">
